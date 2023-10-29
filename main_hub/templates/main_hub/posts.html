@@ -1,0 +1,23 @@
+{% extends 'main_hub/base.html' %}
+{% load static %}
+
+
+{% block content %}
+    {% for post in data %}
+    <section post >
+        <h4>{{ post.date_added }}<h4>
+        <h3>{{ post.title }}</h3>
+        <a href="{% url 'main_hub:post' post.id %}">
+        <img class="post_images" src="{{ post.photo.url }}"></a>
+        <p>{{post.text}}</p>
+        <a href= {% url 'main_hub:edit_post' post.id %}>edit post</a>
+    </section>
+    {% endfor %}
+
+    {% for post in news_posts %}
+    <h3>{{ post.title }}</h3>
+    <a href="{% url 'main_hub:post' post.id %}">
+    {% endfor %}
+{% endblock %}
+</body>
+</html>

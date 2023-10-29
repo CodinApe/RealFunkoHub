@@ -1,0 +1,37 @@
+{% extends 'main_hub/base.html' %}
+
+{% block content %}
+
+<p>{{ post.title }}</p>
+<img class="post_images" src="{{ post.photo.url }}"></a>
+
+<section>
+    <p>{{ post.votes_total }}</p>
+    <form method="post" action="{% url 'main_hub:like_post' post.id %}">
+        {% csrf_token %}
+        <input type="submit" value="Like">
+
+    </form>
+</section>
+
+<section>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Add comment</button>
+    </form>
+</section>
+
+<section>
+    {% for comment in comments %}
+    <p>{{ comment.text }}</p>
+
+    {% empty %} 
+    <p>No comments</p>
+    {% endfor %}
+</section>
+<p><a href="{% url 'main_hub:edit_post' post.id %}">Edit Post</a></p>
+<p><a href="{% url 'main_hub:delete_post' post.id %}">Delete post</a></p>
+
+
+{% endblock content %}
