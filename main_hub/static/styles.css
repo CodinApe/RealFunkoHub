@@ -1,11 +1,66 @@
+html {
+    margin: 0 auto;
+    height: 100vh; 
+}
+
+body {
+    height: 100vh; 
+}
+
+header {
+    background-color: white;
+    box-shadow: 0px 4px 4px;
+    text-align: center;
+}
+
+main {
+    background: rgb(81,136,223);
+    background: linear-gradient(180deg, rgba(81,136,223,1) 0%, rgba(69,165,227,1) 0%, rgba(61,182,230,1) 0%, rgba(52,203,233,1) 5%, rgba(134,226,243,1) 21%, rgba(227,253,255,1) 80%, rgba(255,255,255,1) 100%);
+    background-repeat: no-repeat;
+    display: grid;
+    align-content: center;
+    /* ADD A SCROLL BAR IN MAIN FOR IMAGES Then set a fixed height for background color- changes to dark for dark mode */
+}
+
 h1 a {
-    padding: 20px;
+    font-family: 'Alegreya Sans', 'Arial Narrow', Arial, sans-serif;
+    font-weight: 700;
+}
+
+nav ul {
+    text-decoration: none;
+    list-style-type: none;
+    padding-inline-start: 0px;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:visited {
+    color: black;
+}
+
+h2 {
+    font-family: 'Alegreya Sans', 'Arial Narrow', Arial, sans-serif;
+    font-weight: 700;
+}
+
+
+/* Posts Page specific */
+.hide_posts {
+    display: none;
 }
 
 .post_images {
     width: 400px;
 }
 
-header {
-    text-align: center;
+.post_section {
+    overflow-y: scroll;
 }
+
+
+
+
+

@@ -3,21 +3,44 @@
 
 
 {% block content %}
-    {% for post in data %}
-    <section post >
-        <h4>{{ post.date_added }}<h4>
-        <h3>{{ post.title }}</h3>
-        <a href="{% url 'main_hub:post' post.id %}">
-        <img class="post_images" src="{{ post.photo.url }}"></a>
-        <p>{{post.text}}</p>
-        <a href= {% url 'main_hub:edit_post' post.id %}>edit post</a>
-    </section>
-    {% endfor %}
+    <section id="filter_posts_section">
+        <button id="news_button">
+            News
+        </button>    
+        <button id="events_button">
+            Events
+        </button>    
+        <button id="random_button">
+            Random
+        </button>
 
+    </section>
+    <section id="news_section" class="post_section">
+        <h2>News</h2>
     {% for post in news_posts %}
-    <h3>{{ post.title }}</h3>
-    <a href="{% url 'main_hub:post' post.id %}">
+        <a href="{% url 'main_hub:post' post.id %}">
+        <h3>{{ post.title }}</h3>
+        <p>{{ post.date_added }}</p>
+        <p>{{ post.owner }}</p>
+        <img class="post_images" src="{{ post.photo.url }}"></a>
     {% endfor %}
+    </section>
+
+    <section id="events_section" class = "post_section hide_posts">
+        <h2>Events</h2>
+    {% for post in event_posts %}
+        <h3>{{ post.title }}</h3>
+        <a href="{% url 'main_hub:post' post.id %}"><img class="post_images" src="{{ post.photo.url }}"></a>
+    {% endfor %}
+    </section>
+
+    <section id = "random_section" class = "post_section hide_posts">
+        <h2>Random</h2>
+    {% for post in random_posts %}
+        <h3>{{ post.title }}</h3>
+        <a href="{% url 'main_hub:post' post.id %}"><img class="post_images" src="{{ post.photo.url }}"></a>
+    {% endfor %}
+    </section>  
+
 {% endblock %}
-</body>
 </html>

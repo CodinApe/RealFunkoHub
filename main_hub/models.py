@@ -1,4 +1,5 @@
 from django.db import models
+from django.conf import settings
 from django.contrib.auth.models import User
 
 # Create your models here.
@@ -17,9 +18,10 @@ class Post(models.Model):
     category = models.CharField(max_length=1, choices=CATEGORY_CHOICES, blank=True); 
     #Many to Many relationship allows users to have multiple likes, and posts can have multiple likes
 
-    votes_total = models.IntegerField(default=0); 
-    likers = models.ManyToManyField(User); 
+    owner = models.ForeignKey(User, on_delete=models.CASCADE, null=True); # Sets the user as owner of specific Post object
 
+    votes_total = models.IntegerField(default=0); 
+    likers = models.ManyToManyField(User, related_name='likers'); 
 
 
 class Comment(models.Model):

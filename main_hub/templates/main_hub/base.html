@@ -5,7 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Funko Hub</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans:wght@500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <script defer src="{% static 'functionality.js' %}"></script>
     <script defer src="{% static 'chat.js' %}"></script>
     <script defer src="{% static 'chatroom.js' %}"></script>
     
@@ -14,12 +18,23 @@
 <body>
     <header>
         <h1><a href=" {% url 'main_hub:index' %}">Funko HUB</a></h1>
-        <a href="{% url 'users:logout' %}">Log out</a>
-        
+        <nav>
+            <ul>
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'chat' %}">Chat Room </a></li>
+                    <li><a href="{% url 'users:logout' %}">Log out</a></li>
+                {% else %} 
+                    <li><a href="{% url 'users:login' %}">Log in</a></li>
+                    <li><a href="{% url 'users:register' %}">Register</a></li>
+                {% endif %}
+            </ul>
+        </nav>
         
     </header>
-    {% block content %}
-    {% endblock %}
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
     
 </body>
 </html>

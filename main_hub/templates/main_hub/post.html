@@ -2,7 +2,9 @@
 
 {% block content %}
 
-<p>{{ post.title }}</p>
+<p>{{ post.date_added }}</p>
+<h3>{{ post.title }}</h3>
+<p>{{post.text}}</p>
 <img class="post_images" src="{{ post.photo.url }}"></a>
 
 <section>
@@ -30,8 +32,9 @@
     <p>No comments</p>
     {% endfor %}
 </section>
-<p><a href="{% url 'main_hub:edit_post' post.id %}">Edit Post</a></p>
-<p><a href="{% url 'main_hub:delete_post' post.id %}">Delete post</a></p>
+        <p><a href="{% url 'main_hub:edit_post' post.id %}">Edit Post</a></p>
+        <p><a href="{% url 'main_hub:delete_post' post.id %}">Delete post</a></p>
+
 
 
 {% endblock content %}

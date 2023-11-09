@@ -1,4 +1,6 @@
 from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
+from django.http import Http404
 from .models import Post
 from .forms import CreatePost, Comment
 
@@ -6,7 +8,7 @@ from .forms import CreatePost, Comment
 
 def index(request):
     data = Post.objects.all(); 
-    # grabs all post objects with the category attribute set to 'a' (News)
+    # grabs all post objects with the category attribute set to 'a, b, c' (News, Events, Random)
     news_posts = Post.objects.filter(category = 'a'); 
     event_posts = Post.objects.filter(category = 'b'); 
     random_posts = Post.objects.filter(category = 'c'); 
@@ -14,24 +16,28 @@ def index(request):
     context = {'data': data, 'news_posts': news_posts, 'event_posts': event_posts, 'random_posts': random_posts}; 
     return render(request, 'main_hub/posts.html', context); 
 
-
+@login_required(login_url='users:login')
 def create_post(request):
     if request.method == 'POST':
         form = CreatePost(request.POST, request.FILES); 
         if form.is_valid():
-            form.save(); 
+            post = form.save(commit=False); 
+            post.owner = request.user; 
+            post.save();  
             return redirect('main_hub:index'); 
     else:
         form = CreatePost(); 
-    
+
     context = {'form' : form}; 
 
     return render(request, 'main_hub/createPost.html', context); 
 
-
+@login_required(login_url='users:login')
 def edit_post(request, post_id):
     """Edit previous post by loading post form with previous data"""
     post = Post.objects.get(id=post_id); 
+    if post.owner != request.user:
+        raise Http404; 
     if request.method == 'POST':
         form = CreatePost(request.POST, request.FILES, instance=post); 
         if form.is_valid():
@@ -39,7 +45,7 @@ def edit_post(request, post_id):
             return redirect('main_hub:index'); 
     else:
         form = CreatePost(instance=post); 
-    
+     
     context = {'post': post, 'form': form}; 
     
     return render(request, 'main_hub/edit_post.html', context); 
@@ -48,7 +54,10 @@ def edit_post(request, post_id):
 def delete_post(request, post_id):
     """Delete a post"""
     post = Post.objects.get(id=post_id); 
+    if post.owner != request.user:
+        raise Http404; 
     if request.method == 'POST':
+
         post.delete(); 
         return redirect('main_hub:index'); 
 
@@ -56,7 +65,7 @@ def delete_post(request, post_id):
 
     return render(request, 'main_hub/delete_post.html', context); 
     
-
+@login_required(login_url='users:login')
 def post(request, post_id):
     """A selected post to view and comment on"""
     post = Post.objects.get(id=post_id); 
@@ -77,7 +86,7 @@ def post(request, post_id):
 
     return render(request, 'main_hub/post.html', context); 
 
-
+@login_required
 def like_post(request, post_id):
     """"""
     post = Post.objects.get(id=post_id); 
