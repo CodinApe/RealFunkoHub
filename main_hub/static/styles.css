@@ -1,6 +1,10 @@
 html {
-    margin: 0 auto;
+    background: rgb(81,136,223);
+    background: linear-gradient(180deg, rgba(81,136,223,1) 0%, rgba(69,165,227,1) 0%, rgba(61,182,230,1) 0%, rgba(52,203,233,1) 5%, rgba(134,226,243,1) 21%, rgba(227,253,255,1) 80%, rgba(255,255,255,1) 100%);
+    background-repeat: no-repeat;
     height: 100vh; 
+    overflow-y: hidden;
+    min-width: 300px;
 }
 
 body {
@@ -8,18 +12,25 @@ body {
 }
 
 header {
+    height: 60px;
+    width: 100%;
+    margin: 0 auto;
     background-color: white;
-    box-shadow: 0px 4px 4px;
+    box-shadow: 4px 4px 4px;
     text-align: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    align-items: center;
 }
 
 main {
-    background: rgb(81,136,223);
-    background: linear-gradient(180deg, rgba(81,136,223,1) 0%, rgba(69,165,227,1) 0%, rgba(61,182,230,1) 0%, rgba(52,203,233,1) 5%, rgba(134,226,243,1) 21%, rgba(227,253,255,1) 80%, rgba(255,255,255,1) 100%);
-    background-repeat: no-repeat;
-    display: grid;
-    align-content: center;
     /* ADD A SCROLL BAR IN MAIN FOR IMAGES Then set a fixed height for background color- changes to dark for dark mode */
+}
+
+h1 {
+    grid-column: 1/6;
+    margin-block-start: 0;
+    margin-block-end: 0;
 }
 
 h1 a {
@@ -27,40 +38,72 @@ h1 a {
     font-weight: 700;
 }
 
+nav {
+    grid-column: 7/9;
+}
+
 nav ul {
     text-decoration: none;
     list-style-type: none;
     padding-inline-start: 0px;
+    display: flex;
 }
 
-a {
+a, a:visited {
+    color: black;
     text-decoration: none;
 }
 
-a:visited {
-    color: black;
-}
 
 h2 {
     font-family: 'Alegreya Sans', 'Arial Narrow', Arial, sans-serif;
     font-weight: 700;
 }
 
-
 /* Posts Page specific */
 .hide_posts {
     display: none;
 }
 
+#filter_posts_section {
+    display:flex; 
+    justify-content: space-evenly;
+    margin-top: 10px;
+}
+
+#filter_posts_section button {
+    border: none;
+    background-color: aliceblue;
+    color: blue;
+    padding: 15px 32px;
+    box-shadow: 2px 2px 2px;
+}
+
 .post_images {
-    width: 400px;
+    width: auto;
+    height: 60vw;
+    width: 90vw;
+    object-fit: cover;
+}
+
+.post {
+    text-align: center;
+    border-top: 1px black solid;
+    padding-bottom: 25px;
+    
+}
+
+.post h3{
+    margin: 0 auto;
+    font-size: 25px;
+}
+
+.post p {
+    font-size: 14px;
 }
 
 .post_section {
+    height: 75vh;
     overflow-y: scroll;
+    scroll-behavior: smooth;
 }
-
-
-
-
-

@@ -32,8 +32,13 @@
     <p>No comments</p>
     {% endfor %}
 </section>
+<section>
+    {% if post.owner == request.user %}
         <p><a href="{% url 'main_hub:edit_post' post.id %}">Edit Post</a></p>
         <p><a href="{% url 'main_hub:delete_post' post.id %}">Delete post</a></p>
+    {% endif %}
+</section>
+        
 
 
 
