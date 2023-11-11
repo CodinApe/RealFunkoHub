@@ -1,2 +1,2 @@
 release: python manage.py collectstatic --noinput
-web: daphne funko_hub.asgi:application --port $PORT
+web: gunicorn funko_hub.wsgi
