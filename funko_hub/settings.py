@@ -27,7 +27,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['funko-hub-12479f6f1c16.herokuapp.com']
 
-
+# Domain was not trusted on Heroku
+CSRF_TRUSTED_ORIGINS =['https://funko-hub-12479f6f1c16.herokuapp.com']
 # Application definition
 
 INSTALLED_APPS = [
