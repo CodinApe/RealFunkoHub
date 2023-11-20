@@ -65,6 +65,7 @@ def delete_post(request, post_id):
 
     return render(request, 'main_hub/delete_post.html', context); 
     
+    
 @login_required(login_url='users:login')
 def post(request, post_id):
     """A selected post to view and comment on"""
@@ -72,9 +73,11 @@ def post(request, post_id):
     if request.method == 'POST':
         form = Comment(request.POST); 
         if form.is_valid():
-            new_comment = form.save(commit=False); 
+            new_comment = form.save(); 
             new_comment.post = post; 
+            new_comment.owner=(request.user); 
             new_comment.save(); 
+             
             return redirect('main_hub:post', post_id); 
     else:
         form = Comment(); 

@@ -1,11 +1,10 @@
 {% extends 'main_hub/base.html' %}
 {% load static %}
 
-
 {% block content %}
     <section id="filter_posts_section">
         <!-- <button>Home button?</button> -->
-        <button id="news_button">
+        <button id="news_button" autofocus>
             News
         </button>    
         <button id="events_button">
@@ -15,39 +14,99 @@
             Random
         </button>
     </section>
-    
-    <section id="news_section" class="post_section">
-        <h2>News</h2>
-    {% for post in news_posts %}
-            <a href="{% url 'main_hub:post' post.id %}">
-            <section class="post">
-            <p>{{ post.date_added }}</p>
-            <h3>{{ post.title }}</h3>
-            <img class="post_images" src="{{ post.photo.url }}"></section></a>
-    {% endfor %}
+    <section id="all_post_sections">
+        <section id="news_section" class="post_section">
+            <h2>News</h2>
+            {% for post in news_posts %}
+                <a href="{% url 'main_hub:post' post.id %}">
+                <section class="post">
+                    <div class="posts_content">
+                        <p>{{ post.date_added }}</p>
+                        <h3>{{ post.title }}</h3>
+                        <p class="posts_post_text">{{ post.text|slice:":50" }}{% if post.text|length > 100 %}...{% endif %}</p>
+                    </div>
+                    <img class="post_images" src="{{ post.photo.url }}">
+                </section></a>
+            {% endfor %}
+        </section>
+
+        <section id="events_section" class = "post_section hide_posts">
+            <h2>Events</h2>
+                {% for post in event_posts %}
+                    <a href="{% url 'main_hub:post' post.id %}">
+                    <section class="post">
+                        <div class="posts_content">
+                            <p>{{ post.date_added }}</p>
+                            <h3>{{ post.title }}</h3>
+                            <p class="posts_post_text">{{ post.text|slice:":50" }}{% if post.text|length > 100 %}...{% endif %}</p>
+                        </div>
+                        <img class="post_images" src="{{ post.photo.url }}">
+                    </section></a>
+                {% endfor %}
+            </section>
+            <section id = "random_section" class = "post_section hide_posts">
+                <h2>Random</h2>
+                {% for post in random_posts %}
+                    <a href="{% url 'main_hub:post' post.id %}">
+                    <section class="post">
+                        <div class="posts_content">
+                            <p>{{ post.date_added }}</p>
+                            <h3>{{ post.title }}</h3>
+                            <p class="posts_post_text">{{ post.text|slice:":50" }}{% if post.text|length > 100 %}...{% endif %}</p>
+                        </div>
+                        <img class="post_images" src="{{ post.photo.url }}">
+                    </section></a>
+                {% endfor %}
+            </section> 
     </section>
 
-    <section id="events_section" class = "post_section hide_posts">
-        <h2>Events</h2>
-    {% for post in event_posts %}
-        <section class="post">
-            <a href="{% url 'main_hub:post' post.id %}">
-            <h3>{{ post.title }}</h3>
-            <img class="post_images" src="{{ post.photo.url }}"></a>
-        </section>
-    {% endfor %}
-    </section>
+        
 
-    <section id = "random_section" class = "post_section hide_posts">
-        <h2>Random</h2>
-    {% for post in random_posts %}
-        <section class="post">
-            <a href="{% url 'main_hub:post' post.id %}">
-            <h3>{{ post.title }}</h3>
-            <img class="post_images" src="{{ post.photo.url }}"></a>
+
+            
+
+        <section id="js_guess_section">
+            <h3>Will You Win? Take a guess!</h3>
+            <label for="number">Your Guess:</label>
+            <input type="number" name="number">
         </section>
-    {% endfor %}
-    </section>  
+
+        <section id="js_form_section">
+            <h3>Want to leave a message?</h3>
+            <form id="contact_form" action="" method="get" novalidate >
+                <!-- Added novalidate for automatic django validation -->
+                <label for="full_name">Full Name<span class="required">*</span></label>
+                <input type="text" name="full_name" id="full_name">
+                <p class="hide">The name must be first and last excluding numbers or special characters</p>
+
+                <label for="emailText">Email:<span class="required">*</span></label>
+                <input type="email" name="emailText" id="email_input">
+                <p class="hide">The email entered is invalid. Ensure it is entered correctly</p>
+
+                <label>Phone:<span class="required">*</span></label>
+                <input type="number" name="phone_number" id="phone_number">
+                <p class="hide">The number entered is invalid</p>
+
+                <label for="message" >Comment<span class="required">*</span></label>
+                <input type="text" name="message" id="comment" value="message">
+                <p class="hide">You must include a comment</p>
+
+                <fieldset>
+                    <legend>Choose your prefered means of contact<span class="required">*</span></legend>
+                    <label for="phone">
+                        <input type="radio" name="contact" id="phone" value="phone" checked>
+                        <span>Phone</span>
+                    </label>
+                    <label for="email">
+                        <input type="radio" name="contact" id="email" value="email">
+                        <span>Email</span>
+                    </label>
+                    <p class="hide">Ensure you selected the right means of contact</p>
+                </fieldset>
+                <input type="submit">
+            </form>
+            <p id="contact_display" class="hide">Thank you! <br>Your entered Information:<br></p>
+        </section>
 
 {% endblock %}
 </html>

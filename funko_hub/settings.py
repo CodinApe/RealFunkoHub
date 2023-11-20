@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-v!*robc+*%5258&6o=tca3z006h*w1av8cm7(x&vp5==eiys_j
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['funko-hub-12479f6f1c16.herokuapp.com']
+ALLOWED_HOSTS = ['funko-hub-12479f6f1c16.herokuapp.com', '127.0.0.1']
 
 # Domain was not trusted on Heroku
 CSRF_TRUSTED_ORIGINS =['https://funko-hub-12479f6f1c16.herokuapp.com']

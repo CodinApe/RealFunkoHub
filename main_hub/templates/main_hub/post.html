@@ -1,45 +1,52 @@
 {% extends 'main_hub/base.html' %}
 
 {% block content %}
+<div id="scrollbar_div">
+    <section id="postPageSection">
+        <div id="post_header_div">
+            <p>{{ post.date_added }}</p>
+            <h2>{{ post.title }}</h2>
+            <p id="post_text">{{post.text}}</p>
+        </div>
+        <img class="post_images" src="{{ post.photo.url }}"></a>
 
-<p>{{ post.date_added }}</p>
-<h3>{{ post.title }}</h3>
-<p>{{post.text}}</p>
-<img class="post_images" src="{{ post.photo.url }}"></a>
+        <section id="like_section">
+            <p>{{ post.votes_total }}</p>
+            <form method="post" action="{% url 'main_hub:like_post' post.id %}">
+                {% csrf_token %}
+                <input type="submit" value="Like">
 
-<section>
-    <p>{{ post.votes_total }}</p>
-    <form method="post" action="{% url 'main_hub:like_post' post.id %}">
-        {% csrf_token %}
-        <input type="submit" value="Like">
+            </form>
+        </section>
 
-    </form>
-</section>
+        <section id="createComment_section">
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Add comment</button>
+            </form>
+        </section>
 
-<section>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Add comment</button>
-    </form>
-</section>
+        <section id="comment_section">
+            <h3>Comments</h3>
+            {% for comment in comments %}
+            <div id="comment_div"><p id="comment_owner">{{ comment.owner }}</p>
+            <p id="comment_text">{{ comment.text }}</p></div>
+            
 
-<section>
-    {% for comment in comments %}
-    <p>{{ comment.text }}</p>
-
-    {% empty %} 
-    <p>No comments</p>
-    {% endfor %}
-</section>
-<section>
-    {% if post.owner == request.user %}
-        <p><a href="{% url 'main_hub:edit_post' post.id %}">Edit Post</a></p>
-        <p><a href="{% url 'main_hub:delete_post' post.id %}">Delete post</a></p>
-    {% endif %}
-</section>
-        
-
+            {% empty %} 
+            <p>No comments</p>
+            {% endfor %}
+        </section>
+        <section id="edit_delete_section">
+            {% if post.owner == request.user %}
+                <p><a href="{% url 'main_hub:edit_post' post.id %}">Edit Post</a></p>
+                <p><a href="{% url 'main_hub:delete_post' post.id %}">Delete post</a></p>
+            {% endif %}
+        </section>
+                
+    </section>
+</div>
 
 
 {% endblock content %}

@@ -5,10 +5,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Funko Hub</title>
+    {% comment %} Alegraya font  {% endcomment %}
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans:wght@500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'styles.css' %}">
+    {% comment %} Oswald font {% endcomment %}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+    {% comment %} Roboto font {% endcomment %}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+
     <script defer src="{% static 'functionality.js' %}"></script>
     <script defer src="{% static 'chat.js' %}"></script>
     <script defer src="{% static 'chatroom.js' %}"></script>
@@ -19,14 +29,20 @@
     <header>
         <h1><a href=" {% url 'main_hub:index' %}">Funko HUB</a></h1>
         <nav>
-            <ul>
+            <button id="menu_button">NAV Nutton</button>
+            <ul id="nav_ul">
                 {% if user.is_authenticated %}
-                    <li><a href="{% url 'chat' %}">Chat Room </a></li>
                     <li><a href="{% url 'users:logout' %}">Log out</a></li>
+                    <div id="create_chat_section"> 
+                        <li><a href="{% url 'main_hub:create_post'%}">Create Post</a></li>
+                        <li><a href="{% url 'chat' %}">Chat Room </a></li>  
+                    </div>
                 {% else %} 
                     <li><a href="{% url 'users:login' %}">Log in</a></li>
                     <li><a href="{% url 'users:register' %}">Register</a></li>
+                    
                 {% endif %}
+                <li><a href="#js_guess_section">PLay a game</a></li>
             </ul>
         </nav>
         
@@ -37,4 +53,8 @@
     </main>
     
 </body>
+<footer>
+    <p>For Educational Purposes Only</p>
+    <p>Copyright &copy; Senior Project</p>
+  </footer>
 </html>

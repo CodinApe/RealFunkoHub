@@ -30,6 +30,8 @@ class Comment(models.Model):
     date_added = models.DateTimeField(auto_now_add=True); 
     post = models.ForeignKey(Post, on_delete=models.CASCADE, null=True); 
 
+    owner = models.ForeignKey(User, on_delete=models.CASCADE, null=True); #Sets the user as owner of specific Post object
+
     def __str__(self):
         return self.text; 
 
