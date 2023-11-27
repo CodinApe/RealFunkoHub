@@ -86,9 +86,11 @@ nav ul {
     top: 40px;
     right: -100px;
     width: 100vw;
-    height: 50vh;
-    background-color: #4ba8cd;
+    height: 40vh;
+    background-color: black;
+    color: white;
     transition: left 2s ease-in-out;
+
 }
 nav ul li {
     margin-right: 10px;
@@ -96,6 +98,11 @@ nav ul li {
     font-weight: 600;
     font-size: 14px;
     padding: 5px 8px;
+    margin-top: 30px;
+}
+
+nav ul li:hover {
+    font-size: 18px;
 }
 
 a, a:visited {
@@ -627,6 +634,10 @@ textarea {
     padding: 10px;
     max-width: 400px; */
     min-height: 620px;
+}
+
+#logged_out_container {
+    text-align: center;
 }
 
 #login_container {
