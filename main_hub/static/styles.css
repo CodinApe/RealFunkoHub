@@ -383,6 +383,8 @@ h3 a:hover {
     overflow-y: scroll;
     /* height: 90vh; */
     padding: 0px 20px 20px 20px;
+    font-family: 'Roboto', 'Arial Narrow', Arial, sans-serif;
+
 }
 
 #like_section {
@@ -410,26 +412,27 @@ h3 a:hover {
     margin: -20px auto 0px auto;
     width: 20%;
     min-width: 90px;
+    background-color: black;
+    color: white;
 }
 
-.liked_button {
-    background-color: #4ba8cd;
-    color:white;
-    box-shadow: 0px 0px 0px black;
+.liked_button #like_section form input {
+    box-shadow: 0px 0px 0px transparent;
     border: none;
+    color: black;
 }
 
 #post_header_div {
-    font-family: 'Roboto', 'Arial Narrow', Arial, sans-serif;
     border-bottom: 3px solid black;
 }
 
 .post_date {
     font-size: 14px;
-    margin-bottom: -20px;
+    margin:30px auto -15px auto;
 }
 
 #post_header_div h2 {
+    font-family: 'Oswald', 'Arial Narrow', Arial, sans-serif;
     text-transform: uppercase;
     padding-left: 0px;
     margin-bottom: -10px;
@@ -437,6 +440,8 @@ h3 a:hover {
 }
 
 #post_text {
+    margin: 25px auto 15px auto;
+
     color: #333;
 
 }
@@ -475,7 +480,7 @@ h3 a:hover {
 
 #createComment_section button {
     padding: 12px 18px;
-    font-family: 'Roboto', 'Arial Narrow', Arial, sans-serif;
+    font-family: 'Oswald', 'Arial Narrow', Arial, sans-serif;
     font-size: 20px;
     align-self: center;
     box-shadow: 2px 2px 5px black;
@@ -677,7 +682,7 @@ form {
 
 form button, input[type="submit"] {
     font-size: 22px;
-    font-family: 'Roboto', 'Arial Narrow', Arial, sans-serif;
+    font-family: 'Oswald', 'Arial Narrow', Arial, sans-serif;
     padding: 12px 10px;
     margin: 15px auto;
     width: 50%;
@@ -685,7 +690,7 @@ form button, input[type="submit"] {
 
 input[type='text'], input[type='email'], input[type='number'], input[type='password'], input[type="button"] {
     font-size: 22px;
-    font-family: 'Roboto', 'Arial Narrow', Arial, sans-serif;
+    font-family: 'Oswald', 'Arial Narrow', Arial, sans-serif;
     padding: 10px 1px;
     margin-top: 15px;
     width: 100%;
@@ -875,7 +880,7 @@ textarea {
         overflow-y: hidden;
         grid-column: 1/6;
         grid-row: 1/7;
-        background-color: rgb(0, 153, 248);
+        /* background-color: rgb(0, 153, 248); */
 
     }   
 
@@ -889,7 +894,7 @@ textarea {
         /* padding: 0px 20px 20px 20px; */
         display: flex;
         flex-direction: column;
-        box-shadow: 0px 0px 10px black;
+        box-shadow: 0px 0px 20px black;
         color: black;
         background-color: white;
     }
