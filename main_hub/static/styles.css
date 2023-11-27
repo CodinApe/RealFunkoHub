@@ -895,13 +895,11 @@ textarea {
     }
 
     #postPageSection img {
-        box-shadow: none;
         height: auto;
         width: auto;
         max-height: 60vh;
         max-width: 60vw; 
         min-width: 600px;
-        min-height: 400px;
         object-fit:contain;
         align-self: center;
     }
