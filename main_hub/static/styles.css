@@ -721,6 +721,10 @@ textarea {
         position:relative;
     }
 
+    nav ul li {
+        margin-top: 0px;
+    }
+
 
     #filter_posts_section {
         display:flex;
