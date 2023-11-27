@@ -4,7 +4,7 @@
 *.pyc
 __pycache__
 db.sqlite3
-media
+# media Chnge for true deployment so that images arent uploaded from computer every time
 
 # Backup files # 
 *.bak 
