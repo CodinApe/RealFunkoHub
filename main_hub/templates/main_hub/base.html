@@ -18,43 +18,59 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
-
+    <!-- Font awesome link -->
+    <link rel="stylesheet" 
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    {% block scripts %}
     <script defer src="{% static 'functionality.js' %}"></script>
     <script defer src="{% static 'chat.js' %}"></script>
     <script defer src="{% static 'chatroom.js' %}"></script>
-    
+    {% endblock %}
     
 </head>
-<body>
+<body id="body">
+    {% block header %}
     <header>
+        <input type="button" id="colorToggle" name="colorToggle">
+        <label for="colorToggle" id="toggleLabel"><span><i class="fa-solid fa-sun"></i></span></label>
         <h1><a href=" {% url 'main_hub:index' %}">Funko HUB</a></h1>
         <nav>
-            <button id="menu_button">NAV Nutton</button>
+            <button id="menu_button" for="nav_btn">
+                <div class="bar1 bar"></div>
+                <div class="bar2 bar"></div>
+                <div class="bar3 bar"></div>
+            </button>
+            
+                
+            </input>
             <ul id="nav_ul">
                 {% if user.is_authenticated %}
-                    <li><a href="{% url 'users:logout' %}">Log out</a></li>
-                    <div id="create_chat_section"> 
-                        <li><a href="{% url 'main_hub:create_post'%}">Create Post</a></li>
-                        <li><a href="{% url 'chat' %}">Chat Room </a></li>  
-                    </div>
+                    <li><a href="{% url 'main_hub:create_post'%}">CREATE POST</a></li>
+                    <li><a href="{% url 'chat' %}">CHAT </a></li> 
+                    <li><a href="#js_guess_section">PLAY A GAME</a></li> 
+                    <li><a href="{% url 'users:logout' %}">LOG OUT</a></li>
                 {% else %} 
-                    <li><a href="{% url 'users:login' %}">Log in</a></li>
-                    <li><a href="{% url 'users:register' %}">Register</a></li>
+                    <li><a href="#js_guess_section">PLAY A GAME</a></li>
+                    <li><a href="{% url 'users:login' %}">LOG IN</a></li>
+                    <li id="register"><a href="{% url 'users:register' %}">JOIN THE COMMUNITY</a></li>
                     
                 {% endif %}
-                <li><a href="#js_guess_section">PLay a game</a></li>
             </ul>
         </nav>
         
     </header>
+    {% endblock %}
     <main>
         {% block content %}
         {% endblock %}
     </main>
     
 </body>
-<footer>
-    <p>For Educational Purposes Only</p>
-    <p>Copyright &copy; Senior Project</p>
-  </footer>
+
+{% block footer%}
+    <footer>
+        <p>For Educational Purposes Only</p>
+        <p>Copyright &copy; Funko HUB</p>
+    </footer>
+{% endblock %}
 </html>

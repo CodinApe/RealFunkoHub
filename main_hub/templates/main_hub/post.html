@@ -1,26 +1,53 @@
 {% extends 'main_hub/base.html' %}
 
+{% block scripts %}
+{% endblock %}
+
+{% block header %}
+    <header>
+        <input type="button" id="colorToggle" name="colorToggle">
+        <label for="colorToggle" id="toggleLabel"><span><i class="fa-solid fa-sun"></i></span></label>
+        <h1><a href=" {% url 'main_hub:index' %}">Funko HUB</a></h1>
+        <nav>
+            <button id="menu_button" for="nav_btn">
+                <div class="bar1 bar"></div>
+                <div class="bar2 bar"></div>
+                <div class="bar3 bar"></div>
+            </button>
+            
+                
+            </input>
+            <ul id="nav_ul">
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'main_hub:create_post'%}">CREATE POST</a></li>
+                    <li><a href="{% url 'chat' %}">CHAT </a></li> 
+                    <li><a href="{% url 'users:logout' %}">LOG OUT</a></li>
+                    
+                {% endif %}
+            </ul>
+        </nav>
+        
+    </header>
+    {% endblock %}
 {% block content %}
 <div id="scrollbar_div">
     <section id="postPageSection">
         <div id="post_header_div">
-            <p>{{ post.date_added }}</p>
+            <p class="post_date">{{ post.date_added }}</p>
             <h2>{{ post.title }}</h2>
             <p id="post_text">{{post.text}}</p>
         </div>
         <img class="post_images" src="{{ post.photo.url }}"></a>
 
         <section id="like_section">
-            <p>{{ post.votes_total }}</p>
-            <form method="post" action="{% url 'main_hub:like_post' post.id %}">
+            <p>Likes: {{ post.votes_total }}</p>
+            <form method="post" action="{% url 'main_hub:like_post' post.id %}" id="like_form">
                 {% csrf_token %}
-                <input type="submit" value="Like">
-
+                <input type="submit" {% if liked %}class="liked_button" value="Unlike"{% else %}value="Like"{% endif %}>
             </form>
         </section>
-
         <section id="createComment_section">
-            <form method="post">
+            <form method="post" id="comment_form">
                 {% csrf_token %}
                 {{ form.as_p }}
                 <button type="submit">Add comment</button>
@@ -47,6 +74,4 @@
                 
     </section>
 </div>
-
-
 {% endblock content %}

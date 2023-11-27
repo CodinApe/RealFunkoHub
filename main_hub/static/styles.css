@@ -1,17 +1,22 @@
 html {
     height: 100vh; 
-    overflow-y: hidden;
+    overflow-y: auto;
     min-width: 300px;
 }
 
 body {
     margin: 0 auto;
-    display: flex;
+    padding-top: 60px;
+    /* height: 100vh; */
+    /* display: flex;
     flex-direction: column;
+    position: relative;
+    min-height: 100vh; */
     color: #333;
-    overflow-y: hidden;
-    background-color: rgb(255, 255, 255);
+    overflow-y:unset;
+    
 }
+
 
 header {
     background-color: black;
@@ -23,15 +28,30 @@ header {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
     align-items: center;
+    position: fixed;
+    top: 0;
     /* border-bottom: 4px solid #333; */
 }
 
 main {
     /* ADD A SCROLL BAR IN MAIN FOR IMAGES Then set a fixed height for background color- changes to dark for dark mode */
-    height: 90vh;
-    overflow-y: scroll;
-    /* width: vw; */
-    /* background: linear-gradient(180deg, rgba(81,136,223,1) 0%, rgba(69,165,227,1) 0%, rgba(61,182,230,1) 0%, rgba(52,203,233,1) 5%, rgba(134,226,243,1) 21%, rgba(227,253,255,1) 80%, rgba(255,255,255,1) 100%); */
+    /* height: 90vh; */
+    flex-grow: 1;
+}
+
+/* #footer {
+    position: absolute;
+    bottom: 0;
+} */
+
+footer {
+    text-align: center;
+    margin: 0 auto;
+    padding: 4px 0;
+    margin-top: 30px;
+    background-color: black;
+    color: white;
+    line-height: 8px;
 }
 
 h1 {
@@ -39,21 +59,22 @@ h1 {
     margin-block-start: 0;
     margin-block-end: 0;
     font-family: 'Oswald', 'sans-serif';
+    padding: 10px 0;
 }
 
 h1 a, h1 a:visited{
     color: white;
 }
 
-/* For navigation button etc */
+/* navigation etc */
 .show {
     display: block;
+    right: 0;
 }
 
 nav {
-    grid-column: 7/9;
-    position: relative;;
-    
+    grid-column: 8/9;
+    position: relative;
 }
 
 nav ul {
@@ -61,14 +82,20 @@ nav ul {
     list-style-type: none;
     padding-inline-start: 0px;
     display: none;
-    position:absolute;
-    top: 0;
-    right: 0px;
+    position:fixed;
+    top: 40px;
+    right: -100px;
     width: 100vw;
     height: 50vh;
     background-color: #4ba8cd;
-    color: blue;
-    transition: ease-in-out;
+    transition: left 2s ease-in-out;
+}
+nav ul li {
+    margin-right: 10px;
+    font-family: 'Roboto', 'Arial Narrow', Arial, sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    padding: 5px 8px;
 }
 
 a, a:visited {
@@ -76,36 +103,91 @@ a, a:visited {
     text-decoration: none;
 }
 
+#menu_button {
+    
+    background-color: black;
+    box-shadow: 0px 0px 0px transparent;
+    border: 0px solid transparent;
+    text-shadow: 0px 0px 0px transparent;
+}
+
+.bar1, .bar2, .bar3 {
+    width: 35px;
+    height: 5px;
+    background-color: white;
+    margin: 6px 0;
+    transition: .4s;
+}
+
+.animate .bar1 {
+    transform: translate(0, 11px)rotate(-45deg);
+}
+
+.animate .bar2 {
+    opacity: 0;
+}
+
+.animate .bar3 {
+    transform: translate(0, -11px)rotate(45deg);
+}
+
+#register {
+    background-color: #0099f8;
+    border-radius: 5%;
+    /* margin-left: px; */
+    /* font-size: 30px; */
+}
+
+/* colorToggle */
+#colorToggle {
+    display: none;
+}
+
+#toggleLabel {
+    position: absolute;
+    color: white;
+    /* background-color: white; */
+    border-radius: 35%;
+    font-size: 32px;
+    cursor: pointer;
+    margin: 0 auto 0 10px;
+    border: none;
+}
+
+.darkMode {
+    background-color: #33333377;
+    color: rgb(255, 255, 255);
+}
+
+.mode {
+    color: white;
+}
+
+
 h2 {
     font-family: 'Roboto', 'Arial Narrow', Arial, sans-serif;
     font-weight: 600;
-    font-size: 35px;
+    font-size: 30px;
     padding-left: 20px;
     color: black;
 }
 
 h3 {
+    font-family: 'Oswald', 'Arial Narrow', Arial, sans-serif;
     text-transform: uppercase;
 }
 
 h3 a {
     color: black;
-    font-family: 'Roboto', 'Arial Narrow', Arial, sans-serif;;
+    
 }
 
 h3 a:hover {
     color: white;
 }
 
-#createComment_section p label {
 
-}
-
-textarea {
-    resize: none;
-}
-
-#create_chat_section {
+/*#create_chat_section {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
@@ -121,35 +203,32 @@ textarea {
 
 #create_chat_section h3 a:hover {
     background-color: ;
-}
-
-#createComment_section p textarea{
-    width: 80%;
-    height: 20px;
-    padding: 10px;
-}
+}  */
 
 /* Posts Page specific */
 .hide_posts {
     display: none;
 }
 
-#create_chat_section {
+/* #create_chat_section {
     font-size: 20px;
     margin: 0 auto;
     text-shadow: 2px 2px 6px #3333337e;
-}
+} */
 
 #filter_posts_section {
     text-align: center;
     margin-top: 10px;
+    border-bottom: 1px solid black;
     padding-bottom: 10px;
+
 }
 
 #filter_posts_section button {
     flex: 1;
     min-width: 20px;
-    max-width: 150px;
+    max-width: 140px;
+    width: 100%;
     border: none;
     background-color: rgb(0, 153, 248);
      /* #3d5dfd; */
@@ -157,18 +236,26 @@ textarea {
     color: white;
     padding: 20px 38px;
     box-shadow: 5.5px 5.5px 5px rgb(0, 0, 0);
-    margin-bottom: 10px 10px;
+    margin: 8px 0px;
     font-size: 20px;
     font-weight: 500;
     font-family: 'Roboto', 'Arial Narrow', Arial, sans-serif;
+    cursor: pointer;
 }
+
+/* .buttons {
+    display: none;
+}
+
+.filter_hover:hover .buttons {
+    display: block;
+} */
 
 #filter_posts_section button:focus {
     outline: none;
     background-color: #000000;
     box-shadow: 1px 1px 2px black;
     color: white;
-    
 }
 
 .post_images {
@@ -186,7 +273,7 @@ textarea {
 
 .post {
     text-align: center;
-    border-top: 3px black solid;
+    border-bottom: 1px black solid;
     padding: 25px 10px;
     /* border: 3px solid;
     border-image: linear-gradient(to right, #743ad5, #d53a9d) 1;
@@ -233,24 +320,39 @@ textarea {
     font-size: 20px;
 }
 
-
 .post_section {
     height: 80vh;
     overflow-y: scroll;
     scroll-behavior: smooth;
-    
-    
+}
+
+.post_section h2 {
+    border-bottom: 1px solid black;
+    padding-bottom: 30px;
+    margin-bottom: 0px;
 }
 
 /* JS contact form/JS guess game */
 #js_form_section {
+    margin-top: 20px;
     grid-column: 1/6;
-    grid-row: 6/7;
+    /* grid-row: 3/4; */
 }
 
 #contact_form  {
     display: flex;
     flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.88);
+    color: white;
+    background-color: #000000de;
+}
+
+#contact_display {
+    text-align: left;
+    width: 40vw;
+    margin: 0 auto;
+    grid-column: 1/6;
+    grid-row: 3/4;
 }
 
 .hide {
@@ -262,24 +364,142 @@ textarea {
 }
 
 #js_guess_section{
-    grid-column: 1/6;
-
-    border-top: 2px solid black;
-    grid-row: 5/6;
+    width: 70vw;
+    margin: 20px auto 10px auto;
+    box-shadow: 0px 0px 6px black;
+    padding: 10px 30px;
+    color: white;
+    background-color: #000000de;
+    /* grid-row: 2/3; */
 }
 
-
+#guessInput {
+    width: 25%;
+}
 
 /* post.html specific */
+/* NEED TO FIX LIKE AND COMMENT FORM YO */
 #postPageSection {
     overflow-y: scroll;
     /* height: 90vh; */
     padding: 0px 20px 20px 20px;
-    background-color: rgb(0, 153, 248);
+}
+
+#like_section {
+    text-align: center;
+    margin: 20px auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-family: 'Roboto', 'Arial Narrow', Arial, sans-serif;
+    
+}
+
+#like_section form {
+    box-shadow: none;
+    display: block;
+    margin: auto;
+}
+
+#like_section form input{
+    padding: 12px 18px;
+    font-family: 'Roboto', 'Arial Narrow', Arial, sans-serif;
+    font-size: 20px;
+    /* align-self: center; */
+    box-shadow: 2px 2px 5px black;
+    margin: -20px auto 0px auto;
+    width: 20%;
+    min-width: 90px;
+}
+
+.liked_button {
+    background-color: #4ba8cd;
+    color:white;
+    box-shadow: 0px 0px 0px black;
+    border: none;
+}
+
+#post_header_div {
+    font-family: 'Roboto', 'Arial Narrow', Arial, sans-serif;
+    border-bottom: 3px solid black;
+}
+
+.post_date {
+    font-size: 14px;
+    margin-bottom: -20px;
+}
+
+#post_header_div h2 {
+    text-transform: uppercase;
+    padding-left: 0px;
+    margin-bottom: -10px;
+
+}
+
+#post_text {
+    color: #333;
+
+}
+
+#postPageSection img {
+    box-shadow: 0px 0px 5px black;
+    border: none;
+    min-height: auto;
+    min-width: auto;
+    margin-top: 20px;
+
+}
+
+#createComment_section {
+    margin: -20px;
+}
+
+#createComment_section p textarea{
+    width: 90%;
+    height: 20px;
+    padding: 10px;
+    margin-top: 2px;
+}
+
+#createComment_section p label {
+    display: none;
+}
+
+#createComment_section form {
+    justify-content: center;
+    display: flex;
+    flex-direction: row-reverse;
+    margin-bottom: 20px;
+    box-shadow: none;
+}
+
+#createComment_section button {
+    padding: 12px 18px;
+    font-family: 'Roboto', 'Arial Narrow', Arial, sans-serif;
+    font-size: 20px;
+    align-self: center;
+    box-shadow: 2px 2px 5px black;
+    margin-right: 10px;
+    width: 60%;
+    min-width: 169px;
+    max-width: 170px;
+}
+
+#comment_section {
+    background-color: #3333331b;
+    border-radius: 10px;
+    margin-top: 10px;
+    padding: 10px;
+    box-shadow: 0px 0px 5px black;
 }
 
 #comment_div {
     font-family: 'Roboto', 'Arial Narrow', Arial, sans-serif;
+    border-top: 0.2px solid gray;
+    border-radius: 3px;
+    padding: 5px;
+    margin: 4px;
+    overflow-wrap: break-word;
 }
 
 #comment_owner {
@@ -288,46 +508,67 @@ textarea {
 
 #comment_text {
     margin-left: 10px;
+    text-transform:lowercase;
 }
 
-#post_header_div h2 {
-    text-transform: uppercase;
-    font-family: 'Roboto', 'Arial Narrow', Arial, sans-serif;
-    padding-left: none;
+#edit_delete_section p a  {
+    color: black;
+
 }
 
 /* create_post changes */
-#create_post_section {
+
+#id_title {
+    height: 45px;
+}
+
+/* #create_post_section {
     margin: 0 auto;
     grid-column: 1/6;
     grid-row: 1/7;
     width: 50vw;
-    min-width: 500px;
-    background-color: #4ba8cd;
-    border: 1px solid black;
-    border-radius: 3px;
-    padding: 20px;
-    /* height: 520px; */
+    height: 85vh;
     box-shadow: 0px 0px 10px black;
+    border-radius: 4px;
+    max-width: 475px;
+} */
+
+textarea {
+    resize: none;
+    font-size: 22px;
+    font-family: 'Roboto', 'Arial Narrow', Arial, sans-serif;
+    padding: 10px 1px;
+}
+
+/* #create_post_section{
+    display: flex;
+    flex-direction: column;
+    grid-column: 1/6;
+    grid-row: 1/6;
+    /
+} */
+
+
+/* #create_post_section form{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin: 0 auto;
+    text-align: left;
+    max-width: 400px;
 }
 
 #create_post_section h2 {
-    text-align: center;
+    margin: 0 auto;
+    padding-left: 0;
 }
 
-#create_form {
-    display: grid;
-    grid-row: 1fr 1fr 1fr 1fr 1fr;
-    grid-column: 1fr 1fr;
-    justify-content: center;
-    height: 75vh;
-    
-}
 
 #create_form p:nth-child(-n+3) {
     display: flex;
     flex-direction: column;
     grid-column: 1/3;
+    width: 100%;
 }
 
 #create_form label {
@@ -352,33 +593,56 @@ textarea {
     padding: 10px;
     width: 50%;
     justify-self: center;
+} */
+
+/* Login/Register and chat/chatroom Pages */
+#room_container {
+    width: 50vw;
+    text-align: center;
+    min-width: 300px;
 }
 
-/* Login/Register Page */
-#login_container, #register_div{
+#chat_container {
+    padding-top: 40px;
+    width: 70vw;
+    height: 70vh;
+}
+
+#login_container, #register_div, #create_post_section, #logged_out_container, #room_container, #chat_container {
+    /* display: flex;
+    flex-direction: column;
+    justify-content: center; */
+    margin: 0 auto;
+    grid-column: 1/6;
     display: flex;
     flex-direction: column;
-    grid-column: 1/6;
-    grid-row: 1/6;
-    text-align: center;
+    justify-content: center;
+    /* text-align: center;
     flex-shrink: 1;
     padding: 10px;
+    max-width: 400px; */
+    min-height: 620px;
 }
 
-#login_container h2, #register_div h2 {
-    padding-left: 0;
+#login_container {
+    height: 78vh;
 }
 
-#login_container form, #register_div form {
+#login_container h2, #register_div h2, #create_post_section h2 {
+    padding: 20px 0px;
+    margin: 10px auto 5px auto;
+}
+
+/* #login_container form, #register_div form, #create_post_section form{
     display: flex;
     align-items: center;
     flex-direction: column;
     margin: 0 auto;
     text-align: left;
     max-width: 400px;
-}
+} */
 
-#id_username, #id_password, #id_password1, #id_password2 {
+/* #id_username, #id_password, #id_password1, #id_password2 {
     padding: 12px;
     min-width: 250px;
     max-width: 400px;
@@ -387,7 +651,7 @@ textarea {
     font-family: 'Roboto', 'Arial Narrow', Arial, sans-serif;
 }
 
-#login_container button, #register_div button {
+#login_container button, #register_div button, #create_post_section button {
     font-size: 22px;
     font-family: 'Roboto', 'Arial Narrow', Arial, sans-serif;
     padding: 20px;
@@ -397,9 +661,55 @@ textarea {
 label {
     font-size: 22px;
     font-family: 'Roboto', 'Arial Narrow', Arial, sans-serif;
+} */
+
+/* Form specific */
+
+form {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    width: 70vw;
+    box-shadow: 0px 0px 6px black;
+    padding: 10px 30px;
 }
 
+form button, input[type="submit"] {
+    font-size: 22px;
+    font-family: 'Roboto', 'Arial Narrow', Arial, sans-serif;
+    padding: 12px 10px;
+    margin: 15px auto;
+    width: 50%;
+}
+
+input[type='text'], input[type='email'], input[type='number'], input[type='password'], input[type="button"] {
+    font-size: 22px;
+    font-family: 'Roboto', 'Arial Narrow', Arial, sans-serif;
+    padding: 10px 1px;
+    margin-top: 15px;
+    width: 100%;
+}
+
+label {
+    margin: 12px 0 -5px 0;
+    font-size: 18px;
+    font-family: 'Roboto', 'Arial Narrow', Arial, sans-serif;
+}
+
+textarea {
+    width: 100%;
+}
+
+
 @media screen and (min-width:470px) {
+
+    #buttons {
+        display: block;
+        position:relative;
+    }
+
+
     #filter_posts_section {
         display:flex;
         flex-direction: row;
@@ -413,6 +723,44 @@ label {
         max-width: 150px;
         padding: 20px 38px;
     }
+
+}
+
+@media screen and (min-width: 700px) {
+
+    nav {
+        width: 400px;
+        grid-column: 7/9;
+    }
+    nav ul {
+        position: relative;
+    }
+    #nav_ul {
+        text-decoration: none;
+        list-style-type: none;
+        padding-inline-start: 0px;
+        display: flex;
+        top: 0;
+        right: 0;
+        width: auto;
+        height: auto;
+        background-color: black;
+        color: #4ba8cd;
+        transition: right 2s ease-in-out;
+    }
+
+    #menu_button {
+        display:none;
+    }
+
+    #js_guess_section{
+        width: 55vw;
+    }
+
+    form {
+        width: 55vw;
+    }
+
 }
 
 @media screen and (min-width:950px) {
@@ -428,24 +776,37 @@ label {
     main {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-        grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+        grid-template-rows: auto;
         /* background-color: white; */
     }
 
     /* posts.html */
 
-    #create_chat_section {
+    nav ul {
+        position: relative;
+    }
+
+    /* #create_chat_section {
         display: flex;
         flex-direction: column;
         margin-bottom: 20px;
-    }
+        position: absolute;
+        right: 90vw;
+        top: 50vw;
+        color: black;
+        font-size: 20px;
+        font-weight: 500;
+        font-family: 'Roboto', 'Arial Narrow', Arial, sans-serif;
+
+    } */
 
     #filter_posts_section {
-        margin: 0 auto;
+        margin: 45px auto;
         background: none;
         grid-column: 1/2;
         display: flex;
         flex-direction: column;
+        border-bottom: 0px;
     }
 
     #filter_posts_section button {
@@ -453,21 +814,20 @@ label {
     }
 
     #all_post_sections{
+        margin-top: 45px;
         height: 80vh;
         grid-column: 2/6;
         grid-row: 1/5;
         /* border-left: 3px solid black;
         border-bottom: 3px solid black; */
         /* background-color: #4ba8cd; */
-        box-shadow: -3px 3px 7px black;
+        box-shadow: 0px 0px 12px black;
     }
-
 
     .post_section {
         /* background-color: rgb(0, 153, 248); */
 
     }
-
 
     .post_images {
         width: auto;
@@ -499,13 +859,26 @@ label {
         grid-column: 2/3;
     }
 
+    form {
+        width: 40vw;
+    }
+
+    #js_guess_section{
+        grid-column: 1/6;
+        /* grid-row: 5/6; */
+        width: 40vw;
+        margin: 30px auto;
+    }
+
     /* Post.html page specific */
     #scrollbar_div {
         overflow-y: hidden;
         grid-column: 1/6;
         grid-row: 1/7;
         background-color: rgb(0, 153, 248);
+
     }   
+
     #postPageSection {
         margin: 0 auto;
         width:65vw;
@@ -522,10 +895,13 @@ label {
     }
 
     #postPageSection img {
+        box-shadow: none;
         height: auto;
         width: auto;
         max-height: 60vh;
         max-width: 60vw; 
+        min-width: 600px;
+        min-height: 400px;
         object-fit:contain;
         align-self: center;
     }
@@ -552,7 +928,7 @@ label {
     } */ */
 
     /* register/login page */
-    #login_container form, #register_div form {
+    /* #login_container form, #register_div form {
         display: flex;
         align-items: center;
         flex-direction: column;
@@ -565,5 +941,6 @@ label {
         padding: 12px;
         width: 100%;
         width: 350px;
-    }
+    } */
+
 }

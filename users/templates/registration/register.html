@@ -1,5 +1,35 @@
 {% extends 'main_hub/base.html' %}
 
+{% block scripts %}
+{% endblock %}
+
+{% block header %}
+    <header>
+        <input type="button" id="colorToggle" name="colorToggle">
+        <label for="colorToggle" id="toggleLabel"><span><i class="fa-solid fa-sun"></i></span></label>
+        <h1><a href=" {% url 'main_hub:index' %}">Funko HUB</a></h1>
+        <nav>
+            <button id="menu_button" for="nav_btn">
+                <div class="bar1 bar"></div>
+                <div class="bar2 bar"></div>
+                <div class="bar3 bar"></div>
+            </button>
+            
+                
+            </input>
+            <ul id="nav_ul">
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'main_hub:create_post'%}">CREATE POST</a></li>
+                    <li><a href="{% url 'chat' %}">CHAT </a></li> 
+                    <li><a href="{% url 'users:logout' %}">LOG OUT</a></li>
+                    
+                {% endif %}
+            </ul>
+        </nav>
+        
+    </header>
+    {% endblock %}
+
 {% block content %}
 <div id="register_div">
     <h2>Register</h2>
@@ -13,3 +43,10 @@
 <div>
 
 {% endblock %}
+
+{% comment %} {% block footer%}
+    <footer id="footer">
+        <p>For Educational Purposes Only</p>
+        <p>Copyright &copy; Senior Project</p>
+    </footer>
+{% endblock %} {% endcomment %}

@@ -1,5 +1,8 @@
 {% extends 'main_hub/base.html' %}
 
+{% block scripts %}
+{% endblock %}
+
 {% block content %}
 
 {{ post.title }}
@@ -10,4 +13,11 @@
 </form>
 
 
+{% endblock %}
+
+{% block footer %}
+    <footer id="footer">
+        <p>For Educational Purposes Only</p>
+        <p>Copyright &copy; Senior Project</p>
+    </footer>
 {% endblock %}

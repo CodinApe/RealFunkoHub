@@ -1,18 +1,24 @@
 {% extends 'main_hub/base.html' %}
 {% load static %}
 
+{% block scripts %}
+<script defer src="{% static 'functionality.js' %}"></script>
+{% endblock %}
+
 {% block content %}
     <section id="filter_posts_section">
         <!-- <button>Home button?</button> -->
-        <button id="news_button" autofocus>
-            News
-        </button>    
-        <button id="events_button">
-            Events
-        </button>    
-        <button id="random_button">
-            Random
-        </button>
+        <!-- <span class="filter_hover">Filter Posts</span> -->
+            <button id="news_button" autofocus>
+                News
+            </button>    
+            <button id="events_button">
+                Events
+            </button>    
+            <button id="random_button">
+                Random
+            </button>
+        
     </section>
     <section id="all_post_sections">
         <section id="news_section" class="post_section">
@@ -60,20 +66,19 @@
             </section> 
     </section>
 
-        
-
-
-            
-
         <section id="js_guess_section">
             <h3>Will You Win? Take a guess!</h3>
+            <p>Pick a number between 1-10 to test your luck.</p>
             <label for="number">Your Guess:</label>
-            <input type="number" name="number">
+            <input type="number" name="number" id="guessInput">
+            <input type="submit" >
+            <p id="guess_output">WINNER</p>
+
         </section>
 
         <section id="js_form_section">
-            <h3>Want to leave a message?</h3>
             <form id="contact_form" action="" method="get" novalidate >
+                <h3>Suggestion or Comment? Leave us a message!</h3>
                 <!-- Added novalidate for automatic django validation -->
                 <label for="full_name">Full Name<span class="required">*</span></label>
                 <input type="text" name="full_name" id="full_name">

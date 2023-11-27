@@ -50,21 +50,63 @@ document.getElementById("random_button").addEventListener("click", function() {
 
 
 // Navigation button
-
 document.getElementById("menu_button").addEventListener("click", function(event) {
     let navContent = document.getElementById("nav_ul");
-    navContent.classList.toggle("show");
+    let button = document.querySelector("#menu_button");
 
-    window.addEventListener("click", function(event) {
-        if (!event.target.matches("menu_button")) {
-            if (navUl.classList.contains("show")) {
-                navUl.classList.remove("show"); 
-            }
+    button.classList.toggle("animate");
+    navContent.classList.toggle("show");
+}); 
+
+window.addEventListener("click", function(event) {
+    let navContent = document.getElementById("nav_ul");
+    let button = document.querySelector("#menu_button");
+    if (!event.target.matches("#menu_button")) {
+        if (navContent.classList.contains("show")) {
+            navContent.classList.remove("show"); 
         }
-    }); 
+        if (button.classList.contains("animate")) {
+            button.classList.remove("animate"); 
+        }
+    }
 }); 
 
 
+// Random number generator game
+// function generateNum(event) {
+//     let userInput = document.getElementById("guessInput");
+
+
+
+//     if (userInput.value = )
+// }
+
+// Dark/Light mode toggle 
+
+
+function toggleMode(event) {
+    event.preventDefault();
+
+    let body = document.querySelector("body");
+    let colorToggle = document.getElementById("colorToggle");
+    let icon = document.getElementById("toggleLabel");
+
+    icon.classList.toggle("mode");
+
+    if (icon.classList.contains("mode")){
+        icon.innerHTML = "<span><i class=\"fa-regular fa-moon\"></i></span>"; 
+    }
+    if (!icon.classList.contains("mode")){
+        icon.innerHTML = "<span><i class=\"fa-solid fa-sun\"></i></span>"; 
+    }
+
+    body.classList.toggle("darkMode");  
+
+}
+
+
+
+// Comment form validation
 
 function validateForm(event){
     // prevent the form from submitting while we perform validation
@@ -129,12 +171,13 @@ function validateForm(event){
      if(isValid) {
         userInfo.fullName = fullName.value;
 
-        userInfo.coment = comment.value;
+        userInfo.comment = comment.value;
         
         displayInfo.classList.remove("hide"); 
-        displayInfo.innerHTML += "Full name: " + userInfo.fullName + "<br>" + "Email: " + userInfo.email +"<br>" + "Phone: " + userInfo.phone + "<br>" + "Contact Preference: " + userInfo.preference + "<br>" + "Comment: " + userInfo.coment;
+        displayInfo.innerHTML += "Full name: " + userInfo.fullName + "<br>" + "Email: " + userInfo.email +"<br>" + "Phone: " + userInfo.phone + "<br>" + "Contact Preference: " + userInfo.preference + "<br>" + "Comment: " + userInfo.comment;
      }
 }
 
 document.getElementById("contact_form").addEventListener("submit", validateForm);
+document.getElementById("colorToggle").addEventListener("click", toggleMode); 
 

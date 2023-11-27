@@ -72,7 +72,7 @@ def post(request, post_id):
     post = Post.objects.get(id=post_id); 
     if request.method == 'POST':
         form = Comment(request.POST); 
-        if form.is_valid():
+        if form.is_valid() and form.cleaned_data['text'].strip(): #this checks if the comment has anything withing in by stripping whitespace
             new_comment = form.save(); 
             new_comment.post = post; 
             new_comment.owner=(request.user); 
@@ -85,7 +85,7 @@ def post(request, post_id):
     
     likers = post.likers.all(); 
     votes_total = post.votes_total; 
-    context = {'post': post, 'comments': comments, 'form': form, 'likers': likers, 'votes': votes_total}; 
+    context = {'post': post, 'comments': comments, 'form': form, 'likers': likers, 'votes': votes_total, 'liked': post.likers.filter(pk=request.user.pk).exists()}; 
 
     return render(request, 'main_hub/post.html', context); 
 

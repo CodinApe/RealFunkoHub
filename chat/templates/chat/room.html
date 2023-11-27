@@ -1,10 +1,40 @@
 {% extends 'main_hub/base.html' %}
 {% load static %}
-{% block content %}
+
+{% block header %}
+    <header>
+        <input type="button" id="colorToggle" name="colorToggle">
+        <label for="colorToggle" id="toggleLabel"><span><i class="fa-solid fa-sun"></i></span></label>
+        <h1><a href=" {% url 'main_hub:index' %}">Funko HUB</a></h1>
+        <nav>
+            <button id="menu_button" for="nav_btn">
+                <div class="bar1 bar"></div>
+                <div class="bar2 bar"></div>
+                <div class="bar3 bar"></div>
+            </button>
+            
+                
+            </input>
+            <ul id="nav_ul">
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'main_hub:create_post'%}">CREATE POST</a></li>
+                    <li><a href="{% url 'chat' %}">CHAT </a></li> 
+                    <li><a href="{% url 'users:logout' %}">LOG OUT</a></li>
+                    
+                {% endif %}
+            </ul>
+        </nav>
+        
+    </header>
+    {% endblock %}
     
-    <textarea id="chat-log" cols="100" rows="20"></textarea><br>
-    <input id="chat-message-input" type="text" size="100"><br>
-    <input id="chat-message-submit" type="button" value="Send">
-    {{ room_name|json_script:"room-name" }}
+{% block content %}
+    <section id="chat_container">
+        <textarea id="chat-log" cols="100" rows="20"></textarea><br>
+        <input id="chat-message-input" type="text" size="100"><br>
+        <input id="chat-message-submit" type="button" value="Send">
+        {{ room_name|json_script:"room-name" }}
+    </section>
     
 {% endblock %}
+

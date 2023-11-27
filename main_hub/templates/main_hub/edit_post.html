@@ -1,5 +1,8 @@
 {% extends 'main_hub/base.html' %}
 
+{% block scripts %}
+{% endblock %}
+
 {% block content %}
 <section id="create_post_section">
     <form method="post" enctype="multipart/form-data" id="create_form"> <!-- enctype encodes files to allow submission using Post -->
@@ -9,4 +12,11 @@
     </form>
 </section>
 
+{% endblock %}
+
+{% block footer%}
+    <footer id="footer">
+        <p>For Educational Purposes Only</p>
+        <p>Copyright &copy; Senior Project</p>
+    </footer>
 {% endblock %}
