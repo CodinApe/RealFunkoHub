@@ -5,10 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Funko Hub</title>
-    {% comment %} Alegraya font  {% endcomment %}
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans:wght@500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'styles.css' %}">
     {% comment %} Oswald font {% endcomment %}
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -46,10 +42,12 @@
             <ul id="nav_ul">
                 {% if user.is_authenticated %}
                     <li><a href="{% url 'main_hub:create_post'%}">CREATE POST</a></li>
-                    <li><a href="{% url 'chat' %}">CHAT </a></li> 
+                    <li><a href="{% url 'chat' %}">CHAT </a></li>
+                    <li><a href="#contactUs">CONTACT US</a></li> 
                     <li><a href="#js_guess_section">PLAY A GAME</a></li> 
                     <li><a href="{% url 'users:logout' %}">LOG OUT</a></li>
                 {% else %} 
+                    <li><a href="#contactUs">CONTACT US</a></li>
                     <li><a href="#js_guess_section">PLAY A GAME</a></li>
                     <li><a href="{% url 'users:login' %}">LOG IN</a></li>
                     <li id="register"><a href="{% url 'users:register' %}">JOIN THE COMMUNITY</a></li>

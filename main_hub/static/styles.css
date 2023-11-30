@@ -7,42 +7,26 @@ html {
 body {
     margin: 0 auto;
     padding-top: 60px;
-    /* height: 100vh; */
-    /* display: flex;
-    flex-direction: column;
-    position: relative;
-    min-height: 100vh; */
     color: #333;
     overflow-y:unset;
-    
 }
 
 
 header {
     background-color: black;
-    height: fit-content;
     width: 100%;
     margin: 0 auto;
-    /* box-shadow: 4px 4px 4px; */
     text-align: center;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
     align-items: center;
     position: fixed;
     top: 0;
-    /* border-bottom: 4px solid #333; */
 }
 
 main {
-    /* ADD A SCROLL BAR IN MAIN FOR IMAGES Then set a fixed height for background color- changes to dark for dark mode */
-    /* height: 90vh; */
     flex-grow: 1;
 }
-
-/* #footer {
-    position: absolute;
-    bottom: 0;
-} */
 
 footer {
     text-align: center;
@@ -55,11 +39,11 @@ footer {
 }
 
 h1 {
-    grid-column: 1/6;
+    grid-column: 2/6;
     margin-block-start: 0;
     margin-block-end: 0;
     font-family: 'Oswald', 'sans-serif';
-    padding: 10px 0;
+    padding: 10px 0px;
 }
 
 h1 a, h1 a:visited{
@@ -68,7 +52,8 @@ h1 a, h1 a:visited{
 
 /* navigation etc */
 .show {
-    display: block;
+    display: grid;
+    justify-content: center;
     right: 0;
 }
 
@@ -86,12 +71,12 @@ nav ul {
     top: 40px;
     right: -100px;
     width: 100vw;
-    height: 40vh;
+    height: 300px;
     background-color: black;
     color: white;
     transition: left 2s ease-in-out;
-
 }
+
 nav ul li {
     margin-right: 10px;
     font-family: 'Roboto', 'Arial Narrow', Arial, sans-serif;
@@ -107,7 +92,6 @@ a, a:visited {
 }
 
 #menu_button {
-    
     background-color: black;
     box-shadow: 0px 0px 0px transparent;
     border: 0px solid transparent;
@@ -135,10 +119,9 @@ a, a:visited {
 }
 
 #register {
-    background-color: #0099f8;
+    background-color: rgb(0, 153, 248);
     border-radius: 5%;
-    /* margin-left: px; */
-    /* font-size: 30px; */
+    max-height: 20px;
 }
 
 /* colorToggle */
@@ -149,7 +132,6 @@ a, a:visited {
 #toggleLabel {
     position: absolute;
     color: white;
-    /* background-color: white; */
     border-radius: 35%;
     font-size: 32px;
     cursor: pointer;
@@ -158,14 +140,19 @@ a, a:visited {
 }
 
 .darkMode {
-    background-color: #33333377;
+    background-color: rgb(46 46 48);
     color: rgb(255, 255, 255);
+}
+
+.vDarkMode {
+    background-color: #000000;
+    color: white;
+    border-color: white;
 }
 
 .mode {
     color: white;
 }
-
 
 h2 {
     font-family: 'Roboto', 'Arial Narrow', Arial, sans-serif;
@@ -173,6 +160,14 @@ h2 {
     font-size: 30px;
     padding-left: 20px;
     color: black;
+    border-bottom: 1px solid black;
+    padding-bottom: 30px;
+    margin-bottom: 0px;
+}
+
+.h2Dark {
+    color: white;
+    border-bottom: 1px solid white;
 }
 
 h3 {
@@ -189,35 +184,10 @@ h3 a:hover {
     color: white;
 }
 
-
-/*#create_chat_section {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-}
-
-#create_chat_section h3 a {
-    background-color: black;
-    border-radius: 5px;
-    padding: 5px;
-    color: white;
-    text-transform: none;
-}
-
-#create_chat_section h3 a:hover {
-    background-color: ;
-}  */
-
 /* Posts Page specific */
 .hide_posts {
     display: none;
 }
-
-/* #create_chat_section {
-    font-size: 20px;
-    margin: 0 auto;
-    text-shadow: 2px 2px 6px #3333337e;
-} */
 
 #filter_posts_section {
     text-align: center;
@@ -227,6 +197,13 @@ h3 a:hover {
 
 }
 
+#filter_posts_section .selected_filter_button {
+    outline: none;
+    background-color: #000000;
+    box-shadow: 1px 1px 2px black;
+    color: white;
+}
+
 #filter_posts_section button {
     flex: 1;
     min-width: 20px;
@@ -234,8 +211,6 @@ h3 a:hover {
     width: 100%;
     border: none;
     background-color: rgb(0, 153, 248);
-     /* #3d5dfd; */
-    /* background-color: rgba(81, 135, 223, 0.764); */
     color: white;
     padding: 20px 38px;
     box-shadow: 5.5px 5.5px 5px rgb(0, 0, 0);
@@ -246,21 +221,6 @@ h3 a:hover {
     cursor: pointer;
 }
 
-/* .buttons {
-    display: none;
-}
-
-.filter_hover:hover .buttons {
-    display: block;
-} */
-
-#filter_posts_section button:focus {
-    outline: none;
-    background-color: #000000;
-    box-shadow: 1px 1px 2px black;
-    color: white;
-}
-
 .post_images {
     width: auto;
     height: 55vw;
@@ -268,6 +228,7 @@ h3 a:hover {
     max-width: 700px;
     border-radius: 5%;
     object-fit: cover;
+    box-shadow: 0px 0px 5px black;
 }
 
 .post:hover .post_images {
@@ -278,15 +239,17 @@ h3 a:hover {
     text-align: center;
     border-bottom: 1px black solid;
     padding: 25px 10px;
-    /* border: 3px solid;
-    border-image: linear-gradient(to right, #743ad5, #d53a9d) 1;
-    border-image-slice: 1; */
     
+}
+
+.postDark {
+    text-align: center;
+    border-bottom: 1px solid white;
+    padding: 25px 10px;
 }
 
 .post:hover {
     background-color: rgb(0, 153, 248);
-    padding: -10px;
 }
 
 .posts_content {
@@ -298,29 +261,34 @@ h3 a:hover {
     color: #333;
 }
 
-.post:hover h3 {
-    font-size: 45px;
+.posts_contentDark {
+    grid-column: 1/2;
+    grid-row: 1/2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: white;
 }
 
-.post h3{
+.post:hover h3 {
+    color: white;
+}
+
+h3 {
     color:#333;
     margin: 0 auto;
-    font-size: 40px;
-    /* transform: scaleY(0.82);
-    letter-spacing: 4px; */
+    font-size: 20px;
     font-weight:bold;
     font-family: 'Oswald', 'sans-serif';
-    /* text-decoration: underline; */
-    /* text-shadow: 3px 3px 4px rgba(130, 130, 233, 0.524); */
+}
+
+.postH3Dark {
+    color: white;
 }
 
 .posts_post_text {
     font-family: 'Roboto', 'Arial Narrow', Arial, sans-serif;
     font-size: 18px;
-}
-
-.post:hover .posts_post_text {
-    font-size: 20px;
 }
 
 .post_section {
@@ -329,17 +297,30 @@ h3 a:hover {
     scroll-behavior: smooth;
 }
 
-.post_section h2 {
-    border-bottom: 1px solid black;
-    padding-bottom: 30px;
-    margin-bottom: 0px;
+/* JS contact form/JS guess game */
+.formH3 {
+    color: white;
 }
 
-/* JS contact form/JS guess game */
 #js_form_section {
     margin-top: 20px;
     grid-column: 1/6;
-    /* grid-row: 3/4; */
+}
+
+.required {
+    font-size: 20px;
+    color: rgb(0, 153, 248);
+}
+
+fieldset {
+    margin: 15px 0px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+legend {
+    margin: 0 auto;
+    font-family: 'Roboto', 'Arial Narrow', Arial, sans-serif;
 }
 
 #contact_form  {
@@ -351,11 +332,16 @@ h3 a:hover {
 }
 
 #contact_display {
-    text-align: left;
-    width: 40vw;
-    margin: 0 auto;
-    grid-column: 1/6;
-    grid-row: 3/4;
+    font-family: 'Oswald', 'Arial Narrow', Arial, sans-serif;
+    color: white;
+    font-size: 25px;
+    padding: 0px 50px 0px 50px;
+}
+
+#contactSpan {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
 }
 
 .hide {
@@ -367,24 +353,43 @@ h3 a:hover {
 }
 
 #js_guess_section{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
     width: 70vw;
-    margin: 20px auto 10px auto;
+    margin: 30px auto 10px auto;
     box-shadow: 0px 0px 6px black;
-    padding: 10px 30px;
+    padding: 10px 30px 0px 30px;
     color: white;
     background-color: #000000de;
-    /* grid-row: 2/3; */
+}
+
+#js_guess_section h3 {
+    text-align: left;
+}
+
+#js_guess_section input[type="submit"] {
+    margin: 25px auto 20px auto;
 }
 
 #guessInput {
-    width: 25%;
+    padding-left: 15px;
+    height: 30px;
+    width: 50px;
 }
 
+#guess_output {
+    font-size: 25px;
+    line-height: 30px;
+    font-family: 'Oswald', 'Arial Narrow', Arial, sans-serif;
+    color: white;
+    margin: 0 auto 15px auto;
+}
+
+
 /* post.html specific */
-/* NEED TO FIX LIKE AND COMMENT FORM YO */
 #postPageSection {
     overflow-y: scroll;
-    /* height: 90vh; */
     padding: 0px 20px 20px 20px;
     font-family: 'Roboto', 'Arial Narrow', Arial, sans-serif;
 
@@ -410,7 +415,6 @@ h3 a:hover {
     padding: 12px 18px;
     font-family: 'Roboto', 'Arial Narrow', Arial, sans-serif;
     font-size: 20px;
-    /* align-self: center; */
     box-shadow: 2px 2px 5px black;
     margin: -20px auto 0px auto;
     width: 20%;
@@ -432,14 +436,6 @@ h3 a:hover {
 .post_date {
     font-size: 14px;
     margin:30px auto -15px auto;
-}
-
-#post_header_div h2 {
-    font-family: 'Oswald', 'Arial Narrow', Arial, sans-serif;
-    text-transform: uppercase;
-    padding-left: 0px;
-    margin-bottom: -10px;
-
 }
 
 #post_text {
@@ -525,21 +521,9 @@ h3 a:hover {
 }
 
 /* create_post changes */
-
 #id_title {
     height: 45px;
 }
-
-/* #create_post_section {
-    margin: 0 auto;
-    grid-column: 1/6;
-    grid-row: 1/7;
-    width: 50vw;
-    height: 85vh;
-    box-shadow: 0px 0px 10px black;
-    border-radius: 4px;
-    max-width: 475px;
-} */
 
 textarea {
     resize: none;
@@ -548,60 +532,6 @@ textarea {
     padding: 10px 1px;
 }
 
-/* #create_post_section{
-    display: flex;
-    flex-direction: column;
-    grid-column: 1/6;
-    grid-row: 1/6;
-    /
-} */
-
-
-/* #create_post_section form{
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    margin: 0 auto;
-    text-align: left;
-    max-width: 400px;
-}
-
-#create_post_section h2 {
-    margin: 0 auto;
-    padding-left: 0;
-}
-
-
-#create_form p:nth-child(-n+3) {
-    display: flex;
-    flex-direction: column;
-    grid-column: 1/3;
-    width: 100%;
-}
-
-#create_form label {
-    
-}
-
-#create_form p:first-of-type textarea{
-    height: 20px;
-    padding: 10px;
-
-    
-}
-
-#create_form textarea {
-    max-width: 500px;
-    grid-column: 1/3;
-    
-}
-
-#create_form button {
-    grid-column: 1/3;
-    padding: 10px;
-    width: 50%;
-    justify-self: center;
-} */
 
 /* Login/Register and chat/chatroom Pages */
 #room_container {
@@ -617,18 +547,11 @@ textarea {
 }
 
 #login_container, #register_div, #create_post_section, #logged_out_container, #room_container, #chat_container {
-    /* display: flex;
-    flex-direction: column;
-    justify-content: center; */
     margin: 0 auto;
     grid-column: 1/6;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    /* text-align: center;
-    flex-shrink: 1;
-    padding: 10px;
-    max-width: 400px; */
     min-height: 620px;
 }
 
@@ -643,40 +566,10 @@ textarea {
 #login_container h2, #register_div h2, #create_post_section h2 {
     padding: 20px 0px;
     margin: 10px auto 5px auto;
+    border-bottom: none;
 }
-
-/* #login_container form, #register_div form, #create_post_section form{
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    margin: 0 auto;
-    text-align: left;
-    max-width: 400px;
-} */
-
-/* #id_username, #id_password, #id_password1, #id_password2 {
-    padding: 12px;
-    min-width: 250px;
-    max-width: 400px;
-    width: 80%;
-    font-size: 18px;
-    font-family: 'Roboto', 'Arial Narrow', Arial, sans-serif;
-}
-
-#login_container button, #register_div button, #create_post_section button {
-    font-size: 22px;
-    font-family: 'Roboto', 'Arial Narrow', Arial, sans-serif;
-    padding: 20px;
-    margin-top: 15px;
-}
-
-label {
-    font-size: 22px;
-    font-family: 'Roboto', 'Arial Narrow', Arial, sans-serif;
-} */
 
 /* Form specific */
-
 form {
     margin: 0 auto;
     display: flex;
@@ -716,13 +609,8 @@ textarea {
 
 @media screen and (min-width:470px) {
 
-    #buttons {
-        display: block;
-        position:relative;
-    }
-
-    nav ul li {
-        margin-top: 0px;
+    .post h3{
+        font-size: 30px;
     }
 
 
@@ -742,10 +630,9 @@ textarea {
 
 }
 
-@media screen and (min-width: 700px) {
-
+@media screen and (min-width: 765px){
     nav {
-        width: 400px;
+        width: 520px;
         grid-column: 7/9;
     }
     nav ul {
@@ -765,14 +652,21 @@ textarea {
         transition: right 2s ease-in-out;
     }
 
+    nav ul li {
+        margin-top: 0px;
+    }
+
     #menu_button {
         display:none;
     }
+}
+
+@media screen and (min-width: 700px) {
 
     #js_guess_section{
         width: 55vw;
     }
-
+    
     form {
         width: 55vw;
     }
@@ -780,41 +674,17 @@ textarea {
 }
 
 @media screen and (min-width:950px) {
-    html {
-        
-    }
-
-    body {
-        /* width: 90vw; */
-
-    }
 
     main {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
         grid-template-rows: auto;
-        /* background-color: white; */
     }
 
     /* posts.html */
-
     nav ul {
         position: relative;
     }
-
-    /* #create_chat_section {
-        display: flex;
-        flex-direction: column;
-        margin-bottom: 20px;
-        position: absolute;
-        right: 90vw;
-        top: 50vw;
-        color: black;
-        font-size: 20px;
-        font-weight: 500;
-        font-family: 'Roboto', 'Arial Narrow', Arial, sans-serif;
-
-    } */
 
     #filter_posts_section {
         margin: 45px auto;
@@ -834,15 +704,7 @@ textarea {
         height: 80vh;
         grid-column: 2/6;
         grid-row: 1/5;
-        /* border-left: 3px solid black;
-        border-bottom: 3px solid black; */
-        /* background-color: #4ba8cd; */
         box-shadow: 0px 0px 12px black;
-    }
-
-    .post_section {
-        /* background-color: rgb(0, 153, 248); */
-
     }
 
     .post_images {
@@ -881,9 +743,8 @@ textarea {
 
     #js_guess_section{
         grid-column: 1/6;
-        /* grid-row: 5/6; */
         width: 40vw;
-        margin: 30px auto;
+        margin: 20px auto 0px auto;
     }
 
     /* Post.html page specific */
@@ -891,8 +752,6 @@ textarea {
         overflow-y: hidden;
         grid-column: 1/6;
         grid-row: 1/7;
-        /* background-color: rgb(0, 153, 248); */
-
     }   
 
     #postPageSection {
@@ -900,9 +759,6 @@ textarea {
         width:65vw;
         height: 90vh;
         overflow-y:scroll;
-        /* grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr; 
-        grid-template-columns: 1fr 1fr 1fr; */
-        /* padding: 0px 20px 20px 20px; */
         display: flex;
         flex-direction: column;
         box-shadow: 0px 0px 20px black;
@@ -919,42 +775,5 @@ textarea {
         object-fit:contain;
         align-self: center;
     }
-
-    /*#like_section {
-        grid-column: 1/2;
-        grid-row: 5/7;
-    }
-
-    #createComment_section {
-        grid-column: 2/4;
-        grid-row: 6/7;
-    } 
-
-    #comment_section {
-        grid-column: 1/6;
-        grid-row: 7/8;
-    } 
-
-    /* #edit_delete_section {
-        display: flex;
-        grid-column: 2/3;
-        grid-row: 1/2;
-    } */ */
-
-    /* register/login page */
-    /* #login_container form, #register_div form {
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-        margin: 0 auto;
-        text-align: left;
-        max-width: 400px;
-    }
-    
-    #id_username, #id_password, #id_password1, #id_password2 {
-        padding: 12px;
-        width: 100%;
-        width: 350px;
-    } */
 
 }
