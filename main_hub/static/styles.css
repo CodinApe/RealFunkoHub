@@ -517,10 +517,9 @@ legend {
 
 #edit_delete_section p a  {
     color: black;
-
 }
 
-/* create_post changes */
+/* create_post and delete_post */
 #id_title {
     height: 45px;
 }
@@ -530,6 +529,26 @@ textarea {
     font-size: 22px;
     font-family: 'Roboto', 'Arial Narrow', Arial, sans-serif;
     padding: 10px 1px;
+}
+
+#deleteSect {
+    grid-column: 1/6;
+    padding-top: 45px;
+    text-align: center;
+    width: 80vw;
+    margin: 0 auto 400px auto;
+    height: 30vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#delete_form {
+    box-shadow: 0px 0px 0px transparent;
+}
+
+#delete_form input {
+    box-shadow: 3px 3px 8px black;
 }
 
 
